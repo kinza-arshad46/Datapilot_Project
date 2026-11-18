@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataPilot AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/static/img/logo.png" alt="DataPilot AI" class="brand-logo-img">
+        <h1>DataPilot AI</h1>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" data-page="home"><span class="icon">⌂</span> Home</a>
+        <a class="nav-item" data-page="dataset"><span class="icon">▤</span> Dataset</a>
+        <a class="nav-item" data-page="cleaning"><span class="icon">✦</span> Data Cleaning</a>
+        <a class="nav-item" data-page="eda"><span class="icon">◈</span> EDA Studio</a>
+        <a class="nav-item" data-page="model-lab"><span class="icon">⚙</span> Model Lab</a>
+        <a class="nav-item" data-page="comparison"><span class="icon">⇄</span> Model Comparison</a>
+        <a class="nav-item" data-page="prediction"><span class="icon">◎</span> Prediction Studio</a>
+        <a class="nav-item" data-page="explainability"><span class="icon">◉</span> Explainability</a>
+        <a class="nav-item" data-page="dashboard"><span class="icon">▣</span> Dashboard</a>
+        <a class="nav-item" data-page="reports"><span class="icon">📄</span> Reports</a>
+        <a class="nav-item" data-page="settings"><span class="icon">⚙</span> Settings</a>
+      </nav>
+      <div class="sidebar-footer">
+        DataPilot AI v1.0<br>Upload. Analyze. Train. Predict.
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+          <div>
+            <div class="page-title" id="page-title">Home</div>
+            <div class="breadcrumb">DataPilot AI / Workspace</div>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="user-pill">
+            <div class="user-avatar" id="user-avatar">U</div>
+            <span id="username-display">User</span>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="btn-logout">Logout</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+
+        <!-- ========== HOME ========== -->
+        <section id="page-home" class="page-section active">
+          <div class="grid-2" style="align-items:center;gap:40px;">
+            <div>
+              <h2 style="font-size:2.2rem;font-weight:700;line-height:1.2;margin-bottom:12px;">
+                <span style="background:linear-gradient(90deg,#19C6FF,#7257FF);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;">DataPilot AI</span>
+              </h2>
+              <p style="font-size:1.15rem;color:var(--text-secondary);margin-bottom:8px;">Upload. Analyze. Train. Predict. Understand.</p>
+              <p style="color:var(--text-muted);margin-bottom:28px;max-width:440px;">
+                An intelligent, end-to-end machine learning platform that guides you from raw data to powerful insights — with no coding complexity.
+              </p>
+              <div class="flex gap-2" style="flex-wrap:wrap;">
+                <button class="btn btn-primary btn-lg" onclick="navigate('dataset')">Upload Dataset</button>
+                <button class="btn btn-secondary btn-lg" onclick="navigate('dataset')">Start New Project</button>
+              </div>
+              <div class="flex gap-3 mt-3" style="flex-wrap:wrap;">
+                <div class="text-center"><div style="font-size:1.3rem;font-weight:700;color:var(--cyan);">10+</div><div class="text-muted" style="font-size:0.75rem;">Algorithms</div></div>
+                <div class="text-center"><div style="font-size:1.3rem;font-weight:700;color:var(--cyan);">3</div><div class="text-muted" style="font-size:0.75rem;">Problem Types</div></div>
+                <div class="text-center"><div style="font-size:1.3rem;font-weight:700;color:var(--cyan);">XAI</div><div class="text-muted" style="font-size:0.75rem;">Explainability</div></div>
+                <div class="text-center"><div style="font-size:1.3rem;font-weight:700;color:var(--cyan);">PDF</div><div class="text-muted" style="font-size:0.75rem;">Reports</div></div>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <img src="/static/img/hero-rocket.png" alt="DataPilot AI Rocket" class="hero-rocket-img">
+              <!-- Floating docs / panels -->
+              <div class="float-panel float-p1">Data</div>
+              <div class="float-panel float-p2">Insights</div>
+              <div class="float-panel float-p3">📊</div>
+              <div class="float-panel float-p4">▣</div>
+              <div class="float-panel float-p5">⚙</div>
+            </div>
+          </div>
+
+          <div class="kpi-grid mt-3">
+            <div class="kpi-card" onclick="navigate('dataset')" style="cursor:pointer;"><div class="kpi-icon">▤</div><div class="kpi-value">Upload</div><div class="kpi-label">Dataset</div></div>
+            <div class="kpi-card" onclick="navigate('eda')" style="cursor:pointer;"><div class="kpi-icon">◈</div><div class="kpi-value">Explore</div><div class="kpi-label">EDA Studio</div></div>
+            <div class="kpi-card" onclick="navigate('model-lab')" style="cursor:pointer;"><div class="kpi-icon">⚙</div><div class="kpi-value">Train</div><div class="kpi-label">Model Lab</div></div>
+            <div class="kpi-card" onclick="navigate('prediction')" style="cursor:pointer;"><div class="kpi-icon">◎</div><div class="kpi-value">Predict</div><div class="kpi-label">Studio</div></div>
+            <div class="kpi-card" onclick="navigate('dashboard')" style="cursor:pointer;"><div class="kpi-icon">▣</div><div class="kpi-value">Dashboard</div><div class="kpi-label">Overview</div></div>
+          </div>
+        </section>
+
+        <!-- ========== DATASET ========== -->
+        <section id="page-dataset" class="page-section">
+          <div class="grid-2 gap-3">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Upload Dataset</div></div>
+              <div class="form-group">
+                <label class="form-label">Project Name</label>
+                <input class="form-control" id="project-name" value="My Project" placeholder="Project name">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Domain Mode</label>
+                <select class="form-control" id="domain-select">
+                  <option value="general">General</option>
+                  <option value="business">Business Analytics</option>
+                  <option value="finance">Finance</option>
+                  <option value="healthcare">Healthcare</option>
+                  <option value="agriculture">Agriculture</option>
+                  <option value="industrial">Industrial</option>
+                  <option value="education">Education</option>
+                </select>
+              </div>
+              <div class="upload-zone" id="upload-zone">
+                <input type="file" id="file-input" accept=".csv,.xlsx,.xls" class="upload-input-overlay">
+                <div class="upload-zone-content">
+                  <div class="upload-icon">☁</div>
+                  <div style="font-weight:600;margin-bottom:6px;">Drag & drop your file here</div>
+                  <div class="text-muted" style="font-size:0.85rem;margin-bottom:12px;">Supports CSV & Excel files (max 50MB)</div>
+                  <span class="btn btn-secondary btn-sm" id="browse-btn">Browse Files</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Dataset Summary</div></div>
+              <div class="kpi-grid">
+                <div class="kpi-card"><div class="kpi-value" id="kpi-rows">—</div><div class="kpi-label">Rows</div></div>
+                <div class="kpi-card"><div class="kpi-value" id="kpi-cols">—</div><div class="kpi-label">Columns</div></div>
+                <div class="kpi-card"><div class="kpi-value" id="kpi-missing">—</div><div class="kpi-label">Missing</div></div>
+                <div class="kpi-card"><div class="kpi-value" id="kpi-dupes">—</div><div class="kpi-label">Duplicates</div></div>
+              </div>
+              <div class="flex gap-3 mt-2" style="align-items:center;">
+                <div class="health-ring" id="health-ring" style="--pct:0"><span id="kpi-health">—</span></div>
+                <div>
+                  <div style="font-weight:600;">Dataset Health Score</div>
+                  <div class="text-muted" style="font-size:0.8rem;">Composite of completeness, duplicates, diversity & size</div>
+                  <div class="mt-1" style="font-size:0.85rem;"><span id="profile-filename">—</span> · <span id="profile-size">—</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid-2 mt-3 gap-3">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Data Types</div></div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Missing %</th></tr></thead>
+                  <tbody id="dtypes-body"><tr><td colspan="3" class="text-muted">Upload a dataset to see types</td></tr></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Candidate Targets</div></div>
+              <div class="grid-2 gap-2" id="candidate-targets">
+                <div class="text-muted">Upload a dataset first</div>
+              </div>
+              <div id="class-dist-chart" class="chart-box mt-2" style="min-height:220px;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== CLEANING ========== -->
+        <section id="page-cleaning" class="page-section">
+          <div class="grid-2 gap-3">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Missing Values</div></div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead><tr><th>Feature</th><th>Missing %</th><th>Action</th></tr></thead>
+                  <tbody id="missing-body"><tr><td colspan="3" class="text-muted">Load dataset first</td></tr></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Cleaning Options</div></div>
+              <div class="form-group">
+                <label class="form-label"><input type="checkbox" id="drop-dupes" checked> Remove duplicate rows</label>
+                <div class="text-muted" style="font-size:0.8rem;">Duplicates found: <strong id="dup-count">—</strong></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Outlier handling (IQR)</label>
+                <select class="form-control" id="outlier-action">
+                  <option value="none">No action (review only)</option>
+                  <option value="drop">Drop outlier rows</option>
+                </select>
+              </div>
+              <button class="btn btn-primary w-100" id="btn-apply-cleaning">Apply Changes</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== EDA ========== -->
+        <section id="page-eda" class="page-section">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="document.querySelectorAll('#page-eda .tab-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');">Numerical</button>
+            <button class="tab-btn" onclick="document.querySelectorAll('#page-eda .tab-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');">Categorical</button>
+            <button class="tab-btn" onclick="document.querySelectorAll('#page-eda .tab-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');">Correlation</button>
+          </div>
+          <div class="grid-2 gap-3">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Distribution</div>
+                <select class="form-control" id="eda-num-col" style="width:auto;padding:6px 28px 6px 10px;font-size:0.8rem;"></select>
+              </div>
+              <div id="hist-chart" class="chart-box"></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Box Plot</div></div>
+              <div id="box-chart" class="chart-box"></div>
+            </div>
+          </div>
+          <div class="grid-2 gap-3 mt-3">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Category Frequencies</div>
+                <select class="form-control" id="eda-cat-col" style="width:auto;padding:6px 28px 6px 10px;font-size:0.8rem;"></select>
+              </div>
+              <div id="cat-chart" class="chart-box"></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Correlation Heatmap</div></div>
+              <div id="corr-chart" class="chart-box"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== MODEL LAB ========== -->
+        <section id="page-model-lab" class="page-section">
+          <div class="grid-2 gap-3">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Training Configuration</div></div>
+              <div class="form-group">
+                <label class="form-label">Problem Type</label>
+                <select class="form-control" id="problem-type">
+                  <option value="classification">Classification</option>
+                  <option value="regression">Regression</option>
+                  <option value="clustering">Clustering</option>
+                </select>
+              </div>
+              <div class="form-group" id="target-group">
+                <label class="form-label">Target Column</label>
+                <select class="form-control" id="target-col"></select>
+              </div>
+              <div class="form-group hidden" id="cluster-group">
+                <label class="form-label">Number of Clusters</label>
+                <input class="form-control" id="n-clusters" type="number" value="3" min="2" max="20">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Test Size</label>
+                <select class="form-control" id="test-size">
+                  <option value="0.2">20%</option>
+                  <option value="0.25">25%</option>
+                  <option value="0.3">30%</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Scaler</label>
+                <select class="form-control" id="scaler">
+                  <option value="standard">StandardScaler</option>
+                  <option value="minmax">MinMaxScaler</option>
+                  <option value="robust">RobustScaler</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Algorithms</label>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <label style="font-size:0.85rem;"><input type="checkbox" class="algo-check" value="Logistic Regression" checked> Logistic Regression</label>
+                  <label style="font-size:0.85rem;"><input type="checkbox" class="algo-check" value="Decision Tree" checked> Decision Tree</label>
+                  <label style="font-size:0.85rem;"><input type="checkbox" class="algo-check" value="Random Forest" checked> Random Forest</label>
+                  <label style="font-size:0.85rem;"><input type="checkbox" class="algo-check" value="XGBoost" checked> XGBoost</label>
+                  <label style="font-size:0.85rem;"><input type="checkbox" class="algo-check" value="Linear Regression"> Linear Regression</label>
+                  <label style="font-size:0.85rem;"><input type="checkbox" class="algo-check" value="K-Means"> K-Means</label>
+                </div>
+              </div>
+              <button class="btn btn-primary w-100 btn-lg" id="btn-train">Train Models</button>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Training Progress & Results</div></div>
+              <div id="train-progress" class="hidden mb-2">
+                <div class="progress-step done" style="margin-bottom:8px;font-size:0.85rem;color:var(--cyan);">✓ Data Preprocessing</div>
+                <div class="progress-step done" style="margin-bottom:8px;font-size:0.85rem;color:var(--cyan);">✓ Model Training</div>
+                <div class="progress-step done" style="margin-bottom:8px;font-size:0.85rem;color:var(--cyan);">✓ Evaluation</div>
+              </div>
+              <div id="train-results" style="display:flex;flex-direction:column;gap:12px;">
+                <div class="text-muted">Configure and train models to see results</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== COMPARISON ========== -->
+        <section id="page-comparison" class="page-section">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Model Comparison</div>
+              <div class="card-subtitle">Actual metrics from trained models — no hard-coded results</div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th><th>ROC-AUC / R²</th><th>RMSE</th>
+                  </tr>
+                </thead>
+                <tbody id="comparison-body">
+                  <tr><td colspan="7" class="text-muted text-center">Train models in Model Lab first</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== PREDICTION ========== -->
+        <section id="page-prediction" class="page-section">
+          <div class="grid-2 gap-3">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Prediction Studio</div></div>
+              <div class="form-group">
+                <label class="form-label">Select Model</label>
+                <select class="form-control" id="pred-model-select"></select>
+              </div>
+              <div id="pred-form-fields">
+                <p class="text-muted">Select a trained model to load input form</p>
+              </div>
+              <button class="btn btn-primary w-100" id="btn-predict">Predict</button>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Prediction Result</div></div>
+              <div id="pred-result-panel" class="hidden">
+                <div style="text-align:center;margin-bottom:20px;">
+                  <div class="text-muted" style="font-size:0.8rem;">Prediction</div>
+                  <div id="pred-label" style="font-size:2rem;font-weight:700;background:linear-gradient(90deg,#19C6FF,#7257FF);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;"></div>
+                </div>
+                <div id="pred-proba" class="mb-2"></div>
+                <div class="card-title mt-2 mb-1" style="font-size:0.9rem;">Top Feature Importance</div>
+                <div id="pred-importance"></div>
+              </div>
+              <div id="pred-placeholder" class="text-muted text-center" style="padding:40px 0;">Run a prediction to see results</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== EXPLAINABILITY ========== -->
+        <section id="page-explainability" class="page-section">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Explainable AI</div>
+              <div class="card-subtitle">Feature importance describes model associations — not causation</div>
+            </div>
+            <p class="text-muted mb-2">Train models and use Prediction Studio or Model Comparison to view feature importance. Tree-based models provide built-in importance; permutation importance and SHAP are available for supported models.</p>
+            <div id="explain-content" class="text-muted">Select a trained experiment from Comparison or Prediction to explore explanations.</div>
+          </div>
+        </section>
+
+        <!-- ========== DASHBOARD ========== -->
+        <section id="page-dashboard" class="page-section">
+          <div class="kpi-grid">
+            <div class="kpi-card"><div class="kpi-value" id="dash-rows">—</div><div class="kpi-label">Rows</div></div>
+            <div class="kpi-card"><div class="kpi-value" id="dash-features">—</div><div class="kpi-label">Features</div></div>
+            <div class="kpi-card"><div class="kpi-value" id="dash-models">—</div><div class="kpi-label">Models</div></div>
+            <div class="kpi-card"><div class="kpi-value" id="dash-best">—</div><div class="kpi-label">Best Metric</div></div>
+            <div class="kpi-card"><div class="kpi-value" id="dash-preds">—</div><div class="kpi-label">Predictions</div></div>
+            <div class="kpi-card"><div class="kpi-value" id="dash-health">—</div><div class="kpi-label">Health Score</div></div>
+          </div>
+          <div class="grid-2 gap-3">
+            <div class="card">
+              <div class="card-header"><div class="card-title">Model Performance</div></div>
+              <div id="dash-model-perf" class="chart-box"></div>
+            </div>
+            <div class="card">
+              <div class="card-header"><div class="card-title">Target Distribution</div></div>
+              <div id="dash-class-dist" class="chart-box"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ========== REPORTS ========== -->
+        <section id="page-reports" class="page-section">
+          <div class="card" style="max-width:560px;">
+            <div class="card-header"><div class="card-title">Generate Project Report</div></div>
+            <p class="text-muted mb-2">Download a complete PDF report with dataset analysis, model performance, and predictions.</p>
+            <ul style="list-style:none;margin-bottom:20px;font-size:0.9rem;color:var(--text-secondary);">
+              <li>✓ Dataset Information & Data Quality</li>
+              <li>✓ EDA & Visualizations summary</li>
+              <li>✓ Models & Evaluation metrics</li>
+              <li>✓ Prediction & Explainability</li>
+            </ul>
+            <button class="btn btn-primary btn-lg" id="btn-generate-report">Generate PDF</button>
+            <a id="report-download-link" class="btn btn-secondary mt-2 hidden" href="#" target="_blank">Download PDF</a>
+          </div>
+        </section>
+
+        <!-- ========== SETTINGS ========== -->
+        <section id="page-settings" class="page-section">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Domain Modes</div>
+              <div class="card-subtitle">Changes terminology and suggested visualizations while the ML engine stays the same</div>
+            </div>
+            <div class="grid-3 gap-2">
+              <div class="domain-card"><div class="domain-icon">💼</div><div class="domain-name">Business</div></div>
+              <div class="domain-card"><div class="domain-icon">💰</div><div class="domain-name">Finance</div></div>
+              <div class="domain-card"><div class="domain-icon">🏥</div><div class="domain-name">Healthcare</div></div>
+              <div class="domain-card"><div class="domain-icon">🌾</div><div class="domain-name">Agriculture</div></div>
+              <div class="domain-card"><div class="domain-icon">🏭</div><div class="domain-name">Industrial</div></div>
+              <div class="domain-card"><div class="domain-icon">🎓</div><div class="domain-name">Education</div></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <div id="loading-overlay" class="loading-overlay hidden"><div class="spinner"></div></div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

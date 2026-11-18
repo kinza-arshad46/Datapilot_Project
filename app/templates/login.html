@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataPilot AI — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="login-page">
+    <!-- Floating orbs -->
+    <div class="float-el" style="width:300px;height:300px;background:#1677FF;top:-80px;left:-80px;"></div>
+    <div class="float-el" style="width:250px;height:250px;background:#7257FF;bottom:-60px;right:-60px;animation-delay:2s;"></div>
+    <div class="float-el" style="width:180px;height:180px;background:#19C6FF;top:40%;right:15%;animation-delay:4s;opacity:0.25;"></div>
+
+    <div class="login-card" id="login-panel">
+      <div style="text-align:center;margin-bottom:8px;">
+        <img src="/static/img/logo.png" alt="DataPilot AI" style="height:48px;width:auto;margin:0 auto 12px;display:block;filter:drop-shadow(0 0 16px rgba(22,119,255,0.5));">
+      </div>
+      <h2>DataPilot AI</h2>
+      <p class="tagline">Upload. Analyze. Train. Predict. Understand.</p>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input class="form-control" id="login-username" type="text" placeholder="demo" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-control" id="login-password" type="password" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary w-100 btn-lg" style="margin-top:8px;">Sign In</button>
+      </form>
+      <p class="text-center mt-2" style="font-size:0.85rem;color:var(--text-muted);">
+        Don't have an account? <a href="#" id="show-register" style="color:var(--cyan);">Register</a>
+      </p>
+      <p class="text-center mt-1" style="font-size:0.75rem;color:var(--text-muted);">
+        Demo: <strong>demo</strong> / <strong>demo123</strong>
+      </p>
+    </div>
+
+    <div class="login-card hidden" id="register-panel">
+      <h2>Create Account</h2>
+      <p class="tagline">Join DataPilot AI</p>
+      <form id="register-form">
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input class="form-control" id="reg-username" type="text" placeholder="Choose username" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email (optional)</label>
+          <input class="form-control" id="reg-email" type="email" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input class="form-control" id="reg-password" type="password" placeholder="Min 6 characters" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 btn-lg" style="margin-top:8px;">Create Account</button>
+      </form>
+      <p class="text-center mt-2" style="font-size:0.85rem;color:var(--text-muted);">
+        Already have an account? <a href="#" id="show-login" style="color:var(--cyan);">Sign In</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <div id="loading-overlay" class="loading-overlay hidden"><div class="spinner"></div></div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
